@@ -3,9 +3,9 @@ import { Grid, Paper, Typography } from '@mui/material';
 
 function HomePage() {
     return (
-        <Grid container spacing={3} justifyContent="center" alignItems="center" style={{ height: '100vh' }}>
+        <Grid container spacing={3} justifyContent="center" alignItems="center" sx={{ height: '100vh' }}>
             <Grid item xs={12} sm={6}>
-                <Paper elevation={3} style={{ padding: '20px' }}>
+                <Paper elevation={3} sx={{ padding: 3, textAlign: 'center', color: 'text.secondary' }}>
                     <Typography variant='h4' align='center' gutterBottom>
                         Karibu Coko
                     </Typography>
