@@ -45,8 +45,7 @@ const LoginPage = () => {
         console.log('User logged in:', user);
 
         // Fetch the ID token and custom claims from Firebase (if needed)
-        const userCredential = await signInWithEmailAndPassword(auth, email, password);
-        const firebaseUser = userCredential.user;
+        await signInWithEmailAndPassword(auth, email, password);
 
         // Fetch the user role
         const role = await fetchUserRole();

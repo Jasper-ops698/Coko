@@ -29,6 +29,11 @@ const limiter = rateLimit({
 
 app.use(limiter);
 
+// Restrict CORS for production
+const allowedOrigins = process.env.NODE_ENV === 'production'
+  ? ['https://your-production-domain.com']
+  : ['http://localhost:3000'];
+
 app.use(cors({
   origin: allowedOrigins,
   credentials: true,

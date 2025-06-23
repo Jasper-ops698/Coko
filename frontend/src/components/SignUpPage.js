@@ -3,7 +3,6 @@ import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { Button, TextField, Typography, Box, MenuItem, FormControl, InputLabel, Select, CircularProgress } from '@mui/material';
 import axios from 'axios';
-import bcrypt from 'bcrypt';
 
 const validateEmail = (email) => {
   const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -40,15 +39,12 @@ const SignUpPage = () => {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
 
-      const saltRounds = 10;
-      const hashedPassword = await bcrypt.hash(password, saltRounds);
-
       // Save the user to your backend
       await axios.post('/api/register', {
         uid: user.uid,
         username: username.trim(),
         email: email.trim(),
-        password: hashedPassword,
+        password: password, // send plain password, backend will hash
         role: role.trim()
       });
 
