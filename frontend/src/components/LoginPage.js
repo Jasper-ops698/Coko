@@ -35,7 +35,7 @@ const LoginPage = () => {
         alert('Welcome, Master Admin!');
         navigate('/MasterAdmin');  // Redirect to MasterAdminPage
         return;
-      }
+      } 
 
       const response = await axios.post('/api/login', { email, password });
 
